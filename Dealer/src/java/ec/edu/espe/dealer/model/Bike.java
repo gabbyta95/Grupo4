@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package ec.edu.espe.dealer.model;
 
 /**
  *
  * @author kevinquiroga
  */
-public class Moto {
+public class Bike {
      private String id_moto;
     private String cilindraje;
     private String Modelo;
     private float precio;
 
-    public Moto() {
+    public Bike() {
     }
 
     public float getPrecio() {
@@ -25,7 +26,7 @@ public class Moto {
         this.precio = precio;
     }
 
-    public Moto(String id_moto, String cilindraje, String Modelo) {
+    public Bike(String id_moto, String cilindraje, String Modelo) {
         this.id_moto = id_moto;
         this.cilindraje = cilindraje;
         this.Modelo = Modelo;
@@ -54,5 +55,4 @@ public class Moto {
     public void setModelo(String Modelo) {
         this.Modelo = Modelo;
     }
-    
 }
