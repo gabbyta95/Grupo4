@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.dealer.source;
 
+import ec.edu.espe.dealer.controler.BikeDao;
 import ec.edu.espe.dealer.model.Bike;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -13,6 +14,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -37,12 +39,29 @@ public class bikeResource {
      * @return an instance of ec.edu.espe.dealer.model.Bike
      */
     @GET
+    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Bike getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public Bike getBikeById(@PathParam("id") String id) {
+        String id_product;
+        BikeDao bikeDat=new BikeDao();
+        Bike bike=new Bike();
+        /*bike=bikeDat.buscarMoto(id);*/
+        return bike;
     }
-
+  @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Bike getAllBikes() {
+     /*Public List<Bike> getListBike(){
+             String id_product;
+        BikeDao bikeDat=new BikeDao();
+        Bike bike=new Bike();
+   
+        return bike;
+    }*/
+        Bike bike=new Bike();
+   return bike;
+        
+    }
     /**
      * PUT method for updating or creating an instance of bikeResource
      * @param content representation for the resource

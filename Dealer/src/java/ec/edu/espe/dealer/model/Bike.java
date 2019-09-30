@@ -10,7 +10,7 @@ package ec.edu.espe.dealer.model;
  * @author kevinquiroga
  */
 public class Bike {
-     private String id_moto;
+    private String id_moto;
     private String cilindraje;
     private String Modelo;
     private float precio;

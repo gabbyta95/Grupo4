@@ -190,7 +190,7 @@ INSERT INTO `detalle_proforma` (`id_detalle_proforma`, `id_proforma`, `id_moto`,
 --
 
 CREATE TABLE `factura` (
-  `cod_factura` varchar(8) NOT NULL,
+  `cod_factura` varchar(8) NOT NULL/Users/kevinquiroga/Documents/GitHub/Quiroga_Rivera_Rodriguez_Rosero/bd_gestion_motos.sql,
   `sub_total` float NOT NULL,
   `total` float NOT NULL,
   `impuestos` float NOT NULL
