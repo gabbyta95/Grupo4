@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.dealer.source;
 
+import ec.edu.espe.dealer.controler.SaleDao;
 import ec.edu.espe.dealer.model.Sale;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -35,43 +36,32 @@ public class saleResource extends AbstractFacade<Sale> {
         super(Sale.class);
     }
 
-    @POST
-    @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Sale entity) {
-        super.create(entity);
-    }
 
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") String id, Sale entity) {
-        super.edit(entity);
-    }
-
-    @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") String id) {
-        super.remove(super.find(id));
-    }
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Sale find(@PathParam("id") String id) {
+        return super.find(id);
+    }
+    
+       @GET
+    @Path("estado/{id}")
+@Produces({MediaType.APPLICATION_JSON})
+    public Sale findByEstado(@PathParam("id") String id) {
         return super.find(id);
     }
     
     @GET
     @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON})
     public List<Sale> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON})
     public List<Sale> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }

@@ -5,6 +5,8 @@
  */
 package ec.edu.espe.dealer.model;
 
+import ec.edu.espe.dealer.controler.Conexion;
+import static ec.edu.espe.dealer.model.Sale_.estado;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -34,9 +36,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Sale.findByCodPedido", query = "SELECT s FROM Sale s WHERE s.codPedido = :codPedido")
     , @NamedQuery(name = "Sale.findByCodFactura", query = "SELECT s FROM Sale s WHERE s.codFactura = :codFactura")})
 public class Sale implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
+        @Column(name = "estado")
+    private String estado;
     @Basic(optional = false)
     @Column(name = "id_venta")
     private String idVenta;
@@ -47,8 +50,8 @@ public class Sale implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @Column(name = "estado")
-    private String estado;
+ /*   @Column(name = "estado")
+    private String estado;*/
     @Basic(optional = false)
     @Column(name = "cod_pedido")
     private String codPedido;
@@ -116,6 +119,8 @@ public class Sale implements Serializable {
     public void setCodFactura(String codFactura) {
         this.codFactura = codFactura;
     }
+    
+
 
     @Override
     public int hashCode() {

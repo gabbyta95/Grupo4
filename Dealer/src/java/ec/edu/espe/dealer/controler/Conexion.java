@@ -18,7 +18,7 @@ public class Conexion {
      public DataSource dataSource;
     private static final String URL = "jdbc:mysql://localhost:3306/bd_gestion_motos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "1234"; //CAMBIAN AQUI POR SU CONTRASEÑA
+    private static final String PASSWORD = "gabbyta95"; //CAMBIAN AQUI POR SU CONTRASEÑA
          public Conexion(){
 
         inicializaDataSource();
@@ -29,7 +29,7 @@ public class Conexion {
         Connection connection = null;
         try {
           
-          connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bd_gestion_motos?user=root&password=");
+          connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_gestion_motos?user=root&password=");
             System.out.println("Conexion realizada con exito");
         } catch (Exception e) {
             System.out.println("Conexion Fallida");

@@ -5,89 +5,69 @@
  */
 package ec.edu.espe.dealer.source;
 
+import ec.edu.espe.dealer.controler.UserDao;
 import ec.edu.espe.dealer.model.Usuario;
 import java.util.List;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 /**
+ * REST Web Service
  *
  * @author DANIELAROSERO
  */
-@Stateless
 @Path("user")
-public class userResource extends AbstractFacade<Usuario> {
+public class userResource {
 
-    @PersistenceContext(unitName = "DealerPU")
-    private EntityManager em;
+    @Context
+    private UriInfo context;
 
+    /**
+     * Creates a new instance of userResource
+     */
     public userResource() {
-        super(Usuario.class);
     }
 
-    @POST
-    @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Usuario entity) {
-        super.create(entity);
+    /**
+     * Retrieves representation of an instance of ec.edu.espe.dealer.source.userResource
+     * @return an instance of java.lang.String
+     */
+  /*      @GET
+    @Path("permisos/Administrador")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Usuario getUser( ) {
+        
+        UserDao user=new UserDao();
+       /* return user.LeerPermiso("Administrador");
+    }*/
+    UserDao userDat=new UserDao();
+      @GET
+          @Path("permisos/Administrador")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Usuario> LeerPermiso() {
+  
+        return userDat.LeerPermiso();
+    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getJson() {
+        //TODO return proper representation object
+        throw new UnsupportedOperationException();
     }
 
+    /**
+     * PUT method for updating or creating an instance of userResource
+     * @param content representation for the resource
+     */
     @PUT
-    @Path("modify/{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") String id, Usuario entity) {
-        super.edit(entity);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void putJson(String content) {
     }
-
-    @DELETE
-    @Path("delete/{id}")
-    public void remove(@PathParam("id") String id) {
-        super.remove(super.find(id));
-    }
-
-    @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Usuario find(@PathParam("id") String id) {
-        return super.find(id);
-    }
-    
-
-
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Usuario> findAll() {
-        return super.findAll();
-    }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Usuario> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
-    }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-    
 }

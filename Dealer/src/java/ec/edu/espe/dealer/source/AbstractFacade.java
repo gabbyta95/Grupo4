@@ -38,8 +38,8 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().find(entityClass, id);
     }
     
-       public T findByEstado(Object estado) {
-        return getEntityManager().find(entityClass, estado);
+       public T findByEstado(Object id) {
+        return getEntityManager().find(entityClass, id);
     }
 
     public List<T> findAll() {
