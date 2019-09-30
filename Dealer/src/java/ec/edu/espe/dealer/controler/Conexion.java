@@ -15,17 +15,19 @@ import org.apache.commons.dbcp.BasicDataSource;
  * @author kevinquiroga
  */
 public class Conexion {
-     public DataSource dataSource;
+
+    public DataSource dataSource;
     private static final String URL = "jdbc:mysql://localhost:3306/bd_gestion_motos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "gabbyta95"; //CAMBIAN AQUI POR SU CONTRASEÑA
-         public Conexion(){
+    private static final String PASSWORD = ""; //CAMBIAN AQUI POR SU CONTRASEÑA
+
+    public Conexion() {
 
         inicializaDataSource();
 
     }
-         
-    public  Connection getConnection() {
+
+    /*public  Connection getConnection() {
         Connection connection = null;
         try {
           
@@ -35,12 +37,20 @@ public class Conexion {
             System.out.println("Conexion Fallida");
         }
         return connection;
+    }*/
+    public Connection getConnection() {
+        Connection connection = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            System.out.println("Conexion realizada con exito");
+        } catch (Exception e) {
+            System.out.println("Conexion Fallida");
+        }
+        return connection;
     }
-    
 
-    
-    private void inicializaDataSource(){
-
+    private void inicializaDataSource() {
 
         BasicDataSource basicDataSource = new BasicDataSource();
 
@@ -53,5 +63,5 @@ public class Conexion {
         dataSource = basicDataSource;
 
     }
-    
+
 }

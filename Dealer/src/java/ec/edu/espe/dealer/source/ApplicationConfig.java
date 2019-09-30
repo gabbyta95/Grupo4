@@ -29,6 +29,8 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(ec.edu.espe.dealer.source.ConcessionerResource.class);
+        resources.add(ec.edu.espe.dealer.source.OrderResource.class);
         resources.add(ec.edu.espe.dealer.source.bikeResource.class);
         resources.add(ec.edu.espe.dealer.source.pedidoResource.class);
         resources.add(ec.edu.espe.dealer.source.saleResource.class);
