@@ -7,6 +7,7 @@ package ec.edu.espe.dealer.source;
 
 import ec.edu.espe.dealer.controler.BikeDao;
 import ec.edu.espe.dealer.model.Bike;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -44,24 +45,20 @@ public class bikeResource {
     public Bike getBikeById(@PathParam("id") String id) {
         String id_product;
         BikeDao bikeDat=new BikeDao();
-        Bike bike=new Bike();
+      
+       
         /*bike=bikeDat.buscarMoto(id);*/
-        return bike;
+        return   bikeDat.buscarMotos(id);
     }
+      BikeDao bikeDat=new BikeDao();
   @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Bike getAllBikes() {
-     /*Public List<Bike> getListBike(){
-             String id_product;
-        BikeDao bikeDat=new BikeDao();
-        Bike bike=new Bike();
-   
-        return bike;
-    }*/
-        Bike bike=new Bike();
-   return bike;
-        
+    public List<Bike> getAllBikes() {
+  
+        return bikeDat.searchAllBikes();
     }
+ 
+    
     /**
      * PUT method for updating or creating an instance of bikeResource
      * @param content representation for the resource
