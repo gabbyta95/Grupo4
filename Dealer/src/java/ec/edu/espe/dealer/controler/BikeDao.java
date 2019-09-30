@@ -63,7 +63,7 @@ public class BikeDao {
        }
        catch(Exception e)
        {
-            JOptionPane.showMessageDialog(null,e.getMessage());
+            
             System.out.println("No se pudo encontrar la motocicleta");
        }
        
@@ -77,7 +77,7 @@ public class BikeDao {
         Conexion con = new Conexion();        
         Bike bike = new Bike(); 
         Connection accesoBD = con.getConnection();
-        String sql = "SELECT * FROM vehicle";
+        String sql = "SELECT * FROM moto";
         try{
         
             Statement st = accesoBD .createStatement();
@@ -96,7 +96,7 @@ public class BikeDao {
        }
        catch(Exception e)
        {
-            JOptionPane.showMessageDialog(null,e.getMessage());
+           
             System.out.println("Vacio");
              return null;
        }
