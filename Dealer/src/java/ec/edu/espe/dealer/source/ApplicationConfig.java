@@ -30,6 +30,9 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(ec.edu.espe.dealer.source.bikeResource.class);
+        resources.add(ec.edu.espe.dealer.source.pedidoResource.class);
+        resources.add(ec.edu.espe.dealer.source.saleResource.class);
+        resources.add(ec.edu.espe.dealer.source.userResource.class);
     }
     
 }
